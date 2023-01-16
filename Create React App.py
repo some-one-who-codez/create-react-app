@@ -5,9 +5,19 @@ appName = input("What is your React app name? ")
 directory = input("Which directory do you wish to place it in? ") # eg 'C:\Users\YOUR_USERNAME\Documents\react'
 
 directoryOfApp = directory + '\\' + appName # eg 'C:\Users\YOUR_USERNAME\Documents\react\YOUR_APP_NAME'
-createApp = "npx create-react-app " + appName # creates app
-start = "npm start" # start react app
-vsc = "code ." # opens VSX
+use_vite = str(input("Do you want to use vite? ")).lower()
+
+createApp = ""
+start = ""
+
+if use_vite == "yes":
+    createApp = "npm create vite@latest " + appName + " -- --template react"  # creates app
+    start = "npm run dev" # start react app
+else:
+    createApp = "npx create-react-app " + appName # creates app
+    start = "npm start" # start react app
+
+vsc = "code ." # opens VSC
 
 os.chdir(directory)
 
